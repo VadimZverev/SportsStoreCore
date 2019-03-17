@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SportsStoreCore.Infrastructure;
 using SportsStoreCore.Models;
-using System;
+using SportsStoreCore.Models.ViewModels;
 using System.Linq;
 
 namespace SportsStoreCore.Controllers
@@ -16,7 +16,16 @@ namespace SportsStoreCore.Controllers
             repository = repo;
         }
 
-        public RedirectToActionResult AddCart(int productId, string returnUrl)
+        public ViewResult Index(string returnUrl)
+        {
+            return View(new CartIndexViewModel
+            {
+                Cart = GetCart(),
+                ReturnUrl = returnUrl
+            });
+        }
+
+        public RedirectToActionResult AddToCart(int productId, string returnUrl)
         {
             Product product = repository.Products
                 .FirstOrDefault(p => p.ProductID == productId);
