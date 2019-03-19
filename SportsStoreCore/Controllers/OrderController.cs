@@ -27,7 +27,7 @@ namespace SportsStoreCore.Controllers
 
             if (ModelState.IsValid)
             {
-                order.Lines = order.Lines.ToArray();
+                order.Lines = cart.Lines.ToArray();
                 repository.SaveOrder(order);
                 return RedirectToAction(nameof(Completed));
             }
