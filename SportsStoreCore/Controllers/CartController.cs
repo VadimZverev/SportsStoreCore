@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using SportsStoreCore.Infrastructure;
 using SportsStoreCore.Models;
 using SportsStoreCore.Models.ViewModels;
 using System.Linq;
@@ -49,6 +51,7 @@ namespace SportsStoreCore.Controllers
             }
 
             return RedirectToAction("Index", new { returnUrl });
+
         }
     }
 }
